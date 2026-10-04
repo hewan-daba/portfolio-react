@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* Every class is prefixed "rbx-" so it can't clash with App.css / Works.css */
+.rbx-foot{
+  --rbx-panel:#161213; --rbx-ink:#F5F1EE; --rbx-mute:#B8ACA9; --rbx-line:#3A2020;
+  --rbx-accent:#E63946; --rbx-accent-2:#FF5A5F; --rbx-deep:#7A0C10;
+  --rbx-grad:linear-gradient(135deg,var(--rbx-deep) 0%,var(--rbx-accent) 100%);
+  position:relative;margin:0;overflow:hidden;box-sizing:border-box;
+  color:var(--rbx-ink);font:400 17px/1.6 "Instrument Sans",system-ui,sans-serif;text-align:left;
+  border-top: 1px;box-shadow: #12080A;
+  background:radial-gradient(60% 70% at 50% 0%,rgba(122,12,16,.4),transparent 75%),#0A0A0B;
+}
+.rbx-foot *{box-sizing:border-box}
+.rbx-foot::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(230,57,70,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(230,57,70,.13) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 75% 80% at 50% 20%,#000 10%,transparent 70%);
+  mask-image:radial-gradient(ellipse 75% 80% at 50% 20%,#000 10%,transparent 70%);
+}
+.rbx-foot>*{position:relative}
+.rbx-foot a{text-decoration:none;color:inherit}
+.rbx-foot button{font:inherit;color:inherit;cursor:pointer}
+.rbx-foot :focus-visible{outline:3px solid var(--rbx-accent-2);outline-offset:3px}
+.rbx-wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* top: description | contact | details */
+.rbx-top{display:grid;grid-template-columns:1fr auto 1fr;gap:56px;align-items:center;padding-top:96px;padding-bottom:80px}
+.rbx-about p{margin:0;max-width:27ch;font:500 22px/1.4 "Bricolage Grotesque","Instrument Sans",sans-serif;letter-spacing:-.01em;color:var(--rbx-mute);padding-left:18px;border-left:2px solid var(--rbx-accent)}
+.rbx-center{text-align:center;max-width:464px}
+
+.rbx-contact{
+  display:inline-block;font:800 clamp(20px,2.4vw,26px) "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;
+  padding:22px 68px;border-radius:20px;color:var(--rbx-ink);
+  background:linear-gradient(135deg,#2B1417,#5A161D);border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 14px 36px -18px rgba(230,57,70,.6);
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.rbx-contact:hover{transform:translateY(-3px);border-color:rgba(255,90,95,.65);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 18px 40px -16px rgba(230,57,70,.85)}
+
+.rbx-dock{display:flex;flex-wrap:wrap;justify-content:center;width:max-content;max-width:min(100%,464px);margin:32px auto 0;gap:12px;padding:14px;border-radius:30px;background:#141011;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.rbx-dock a{position:relative;width:62px;height:62px;border-radius:19px;display:grid;place-items:center;color:#fff;border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);transition:transform .2s}
+.rbx-dock a:hover{transform:translateY(-6px) scale(1.06)}
+.rbx-dock svg{width:28px;height:28px}
+.rbx-dock a::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,6px);padding:5px 11px;border-radius:8px;background:var(--rbx-panel);border:1px solid var(--rbx-line);font-size:13px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+.rbx-dock a:hover::after,.rbx-dock a:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+.rbx-s-instagram{background:linear-gradient(45deg,#F9A825 5%,#E91E63 50%,#7B2FD0 100%)}
+.rbx-s-linkedin{background:linear-gradient(160deg,#0F73D0,#0A57A8)}
+.rbx-s-telegram{background:linear-gradient(160deg,#37B6EA,#2790C9)}
+.rbx-s-tiktok{background:linear-gradient(160deg,#25262B,#050506)}
+.rbx-s-youtube{background:linear-gradient(160deg,#FF2D3D,#C4001D)}
+.rbx-s-behance{background:linear-gradient(160deg,#2A7BFF,#1050D8)}
+.rbx-s-x{background:linear-gradient(160deg,#25262B,#050506)}
+.rbx-s-facebook{background:linear-gradient(160deg,#2E8BFF,#1456C8)}
+.rbx-s-whatsapp{background:linear-gradient(160deg,#34D56E,#12894A)}
+.rbx-txt{font:800 26px "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;line-height:1}
+
+.rbx-info{justify-self:end;display:grid;gap:12px;justify-items:end}
+.rbx-mailrow{display:flex;align-items:center;gap:12px}
+.rbx-mail{font:800 24px "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;transition:color .15s}
+.rbx-mail:hover{color:var(--rbx-accent-2)}
+.rbx-copy{padding:5px 14px;border-radius:999px;border:1px solid var(--rbx-line);background:rgba(22,18,19,.8);font-size:13px;color:var(--rbx-mute);transition:border-color .15s,color .15s}
+.rbx-copy:hover{border-color:var(--rbx-accent);color:var(--rbx-ink)}
+.rbx-row{display:flex;align-items:center;gap:10px;color:var(--rbx-mute);font-size:16px}
+.rbx-row svg{width:17px;height:17px;color:var(--rbx-accent-2);flex:none}
+.rbx-row i{width:8px;height:8px;margin:0 4.5px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.18);flex:none}
+
+/* giant wordmark (cursor spotlight) */
+.rbx-mark{
+  margin:0 0 -.17em;padding-top:.04em;text-align:center;user-select:none;
+  font:800 clamp(96px,23vw,330px)/.8 "Bricolage Grotesque",sans-serif;letter-spacing:-.045em;
+  background:radial-gradient(240px circle at var(--mx,-999px) var(--my,-999px),rgba(255,110,105,.95),rgba(255,90,95,0) 72%),
+             linear-gradient(180deg,#C0303C 0%,#8E1A22 45%,rgba(60,8,12,.75) 80%,rgba(30,5,8,.4) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* bottom bar */
+.rbx-bar{position:relative;z-index:2;background:#12080A;border-top:1px solid var(--rbx-line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.rbx-barin{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding-top:24px;padding-bottom:24px;font-size:14px;color:var(--rbx-mute)}
+.rbx-mid{text-align:center}
+.rbx-mid b{color:var(--rbx-ink);font-weight:500}
+.rbx-up{justify-self:end;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:9px 10px 9px 18px;border:1px solid var(--rbx-line);border-radius:999px;background:transparent;color:var(--rbx-ink);font-size:14px;font-weight:500;transition:border-color .15s}
+.rbx-up span{width:30px;height:30px;border-radius:50%;background:var(--rbx-grad);display:grid;place-items:center;transition:transform .2s}
+.rbx-up:hover{border-color:var(--rbx-accent)}
+.rbx-up:hover span{transform:translateY(-3px)}
+
+/* "Email copied" toast */
+.rbx-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:11px 20px;border-radius:999px;background:#161213;color:#F5F1EE;border:1px solid #E63946;font:400 14px "Instrument Sans",sans-serif;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:1000}
+.rbx-toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .rbx-top{grid-template-columns:1fr;gap:40px;padding-top:72px;padding-bottom:56px;text-align:center}
+  .rbx-center{order:-1}
+  .rbx-about{display:grid;justify-items:center}
+  .rbx-about p{border-left:0;padding-left:0;font-size:20px}
+  .rbx-info{justify-self:center;justify-items:center}
+}
+@media (max-width:760px){
+  .rbx-wrap{padding:0 20px}
+  .rbx-contact{padding:20px 52px}
+  .rbx-dock{gap:10px;padding:10px}
+  .rbx-dock a{width:54px;height:54px}
+  .rbx-barin{grid-template-columns:1fr;text-align:center;gap:14px}
+  .rbx-up{justify-self:center}
+}
+@media (prefers-reduced-motion:reduce){.rbx-foot *,.rbx-toast{transition:none!important}}
