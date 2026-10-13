@@ -845,25 +845,34 @@ header{
     }
   }
   
-  .burger{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 7px;
-    width:44px;
-    height: 44px;
-    padding: 2px 7px;
-    background: none;
-    border: 0;
-    cursor: pointer;
+  .burger {
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
   }
-  .burger span{
-    display: block;
+
+  .burger span {
+    position: absolute;
+    left: 8px;
+    width: 28px;              /* a fixed width, so the bars cannot collapse */
     height: 3px;
-    border-radius:3px;
-    background: #e8c9cc;        /* soft pink like your image */
+    border-radius: 3px;
+    background: #e8c9cc;
     transition: transform 0.3s ease, opacity 0.2s ease;
   }
+  .burger span:nth-child(1) { top: calc(50% - 11.5px); }
+  .burger span:nth-child(2) { top: calc(50% - 1.5px); }
+  .burger span:nth-child(3) { top: calc(50% + 8.5px); }
+
+  /* turns into an X when the menu is open */
   header.menu-open .burger span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
   header.menu-open .burger span:nth-child(2) { opacity: 0; }
   header.menu-open .burger span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
