@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import "./AboutT.css";
 import TestimonialWall from "./TestimonialWall";
@@ -198,14 +199,14 @@ function AboutT() {
                 </div>
               </a>
 
-              <a href="/works" className="cta cta-secondary" type="button">
+              <Link to="/works" className="cta cta-secondary" type="button">
                 <div className="cta-layer">
                   <span>View my work <Arrow /></span>
                 </div>
                 <div className="cta-layer">
                   <span>Enjoy <Arrow /></span>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="footer2-right">
