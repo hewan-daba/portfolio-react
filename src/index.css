@@ -59,9 +59,14 @@
     filter: invert(1) brightness(2);
   }
 }
-html {
-  overflow-x: clip;
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;          /* old browsers */
 }
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }   /* new browsers */
+}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0;
   padding:0;
