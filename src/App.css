@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Crimson+Text:wght@400;600;700&display=swap');
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -91,28 +93,33 @@ header{
 }
 .logoarea{
   text-align: left;
+  
 }
 .logo{
   color: white;
   font-family: IBM Plex Serif;
-  font-size: 40px;
+  font-size: 200%;
   font-weight: 700;
   
+}
+.logo a{
+  text-decoration: none;
 }
 .logosub{
   color:white;
   font-family: IBM Plex Serif;
-  font-size: 10px;
+  font-size: 58%;
   margin-left: 50%;
 }
 .nav{
   display: flex;
   flex-direction: row;
   gap: 65px;
-  margin-top: 1%;
-  text-align: right;
-  margin-left: 550px;
+  top: 7vh;
+  left:40%;
+  text-align: center;
   position: fixed;
+  justify-content: center;
 
 }
 .nav a{
@@ -132,7 +139,8 @@ header{
   font-weight: 600;
   font-size: 15px;
   padding: 10px 20px;
-  margin-right: 60px;
+  position:fixed;
+  left: 84%;
 }
 .contact:hover{
   background: linear-gradient(
@@ -427,80 +435,7 @@ header{
   font-size: 15px;
   font-weight:300;
 }
-.services{
-  background: linear-gradient(
-    180deg,
-    #000000,
-    #510909
-  );
-  color: white;
-  position: relative;
-}
-.service-scroll{
-  min-height: 100vh;
-  display:flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: visible;
-}
-.service-text{
-  position: relative;
-  z-index: 5;
 
-  text-align: center;
-
-  pointer-events: none;
-}
-.content{
-  font-size: 50px;
-  line-height: 1.2;
-  margin: 0;
-}
-.contentin{
-  font-size: 20px;
-  margin-top: 30px;
-  font-style:italic;
-}
-.service-image{
-  position: absolute;
-  border-radius: 30px;
-
-  top: 15%;
-  left: 50%;
-
-  width: 420px;
-  height: 70vh;
-  max-height: 600px;
-
-  object-fit: cover;
-
-  z-index: 10;
-  will-change: transform;
-}
-.service-image-left{
-  transform: translateX(-50%);
-}
-.service-image-right{
-  transform: translateX(-50%);
-}
-@media (max-width: 768px){
-
-  .content{
-    font-size: 40px;
-  }
-
-  .contentin{
-    font-size: 17px;
-  }
-
-  .service-image{
-    width: 150px;
-    height: 250px;
-  }
-
-}
 .footer{
   width:100%;
   min-height: 200px;
@@ -647,4 +582,479 @@ header{
     right: 0;
     border-right-color: var(--border);
   }
+}
+.services.cinema {
+  background: linear-gradient(180deg, #000, #2a0b0d 60%, #3d0a10);
+  padding-bottom: 60px;
+}
+
+/* ---- one service row ---- */
+.cin-svc {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(270px, 390px) 1fr;
+  gap: 28px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 5vw;
+  min-height: 66vh;
+}
+
+/* ---- images (they fly in using --p set by React) ---- */
+.cin-im {
+  margin: 0;
+  width: min(100%, 420px);
+  aspect-ratio: 4 / 5;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(150deg, #4a1218, #14070a);
+  will-change: transform;
+}
+.cin-im img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cin-im.l {
+  justify-self: end;
+  transform: translateX(calc((1 - var(--p, 0)) * 14vw))
+    rotate(calc(-4deg - (1 - var(--p, 0)) * 3deg));
+}
+.cin-im.r {
+  justify-self: start;
+  transform: translateX(calc((var(--p, 0) - 1) * 14vw))
+    rotate(calc(4deg + (1 - var(--p, 0)) * 3deg));
+}
+
+/* ---- centre text ---- */
+.cin-c {
+  text-align: center;
+  opacity: calc(0.2 + var(--p, 0) * 0.8);
+  transform: translateY(calc((1 - var(--p, 0)) * 26px));
+}
+.cin-frame {
+  position: relative;
+  padding: 26px 22px;
+  border: 1px solid #3a2020;
+  background: rgba(10, 3, 5, 0.65);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 60px rgba(230, 57, 70, 0.06);
+}
+.cin-frame::before,
+.cin-frame::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #e63946;
+}
+.cin-frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.cin-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.cin-title {
+  margin: 0;
+  color: #f5f1ee;
+  font: 700 clamp(34px, 4vw, 54px) / 1.05 "Crimson Text", serif;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(230, 57, 70, 0.35);
+}
+.cin-rule {
+  width: 56px;
+  height: 2px;
+  margin: 16px auto 18px;
+  background: linear-gradient(90deg, transparent, #e63946, transparent);
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.8);
+}
+.cin-desc {
+  margin: 0 0 22px;
+  color: #e9dfdc;
+  font: italic 19px/1.55 "Crimson Text", serif;
+}
+.cin-desc span {
+  display: block;
+}
+.cin-desc span:first-child {
+  color: #ff5a5f;
+  font-weight: 600;
+  font-size: 21px;
+  margin-bottom: 4px;
+}
+
+/* ---- little visuals ---- */
+.cin-viz {
+  width: 100%;
+  height: 50px;
+  overflow: visible;
+}
+.cin-viz circle,
+.cin-viz rect {
+  fill: #fff;
+}
+.cin-acts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8aca9;
+}
+.cin-swatches {
+  display: flex;
+  gap: 6px;
+}
+.cin-swatches i {
+  flex: 1;
+  height: 34px;
+  border-radius: 8px;
+}
+.cin-wave {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+}
+.cin-wave i {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: #e63946;
+  animation: cinWave 1.2s ease-in-out infinite;
+  animation-delay: calc(var(--k) * -0.09s);
+}
+@keyframes cinWave {
+  0%, 100% { transform: scaleY(0.2); }
+  50% { transform: scaleY(1); }
+}
+.cin-line { display: block; }
+
+/* ---- phone screens ---- */
+@media (max-width: 860px) {
+  .cin-svc {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 36px 5vw;
+  }
+  .cin-c {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+  .cin-im {
+    width: 100%;
+  }
+}
+.burger { display: none; }
+.menu   { display: contents; }
+@media (max-width: 700px) {
+  header {
+    margin: 0;
+    padding: 18px 20px;
+    align-items: center;
+    z-index: 1000;              /* menu stays above page content */
+  }
+  .logosub{font-size: 11px;}
+  .logo{font-size: 30px;}
+  .hero1{
+    --card-h: min(50vw, 250px);              /* video stack height */
+    --card-hv: min(65vw, 250px);
+    --fs: clamp(34px, 20vw, 68px);           /* text size */
+    --lh: 0.9;                               /* line height */
+    --gap: calc(var(--card-h) + 2px ); 
+    min-height: 80svh;
+    justify-content: center; 
+    padding: 0 30px 40px;
+  }
+  .herotext {
+    position: relative;
+    width: 100%;
+    font-size: clamp(34px, 17vw, 68px);   /* was 90px */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 8vh;
+    text-align: left;
+    line-height: 0.9;
+    /* leaves room above and below for the two sentences to move apart */
+    margin: 50px 0 calc(var(--gap) + 28px);  /* top = gap from the header */
+  }
+  .hero-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.01em;                           /* was 40px */
+    transition: transform 0.6s ease;
+  }
+   /* indent "STORIES." like in your sketch */
+  .hero-right2 {
+    padding-left: 1.0em;
+  }
+   /* cancel the desktop sideways split */
+  .herotext.split .hero-left,
+  .herotext.split .hero-right,
+  .herotext.split .hero-left2,
+  .herotext.split .hero-right2 {
+    transform: none;
+  }
+   /* vertical split: the first sentence moves up, the second moves down */
+  
+  .herotext.split .hero-line:nth-child(2) {
+    transform: translateY(var(--gap));
+  }
+
+   /* video cards stay centered between the two sentences */
+  .hero-videos {
+    left: 50%;                             /* was 45% */
+    top: calc(var(--fs) * var(--lh) * 2 + var(--gap) / 2);
+    width: calc(var(--card-hv) * 0.73);
+    height: var(--card-hv);
+  }
+  /* "One Frame at a Time" centered under the hero */
+  .herosub {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  @keyframes cardCycle {
+    0% {
+      transform: translate(-50%, -50%) rotate(-3deg) scale(1);
+      z-index: 6;
+    }
+    18% {
+      transform: translate(-50%, -50%) translateX(-190px) translateY(8px)
+        rotate(-8deg) scale(0.96);
+      z-index: 6;
+    }
+    18.01% { z-index: 0; }
+    100% {
+      transform: translate(-50%, -50%) translate(-12px, -36px)
+        rotate(5deg) scale(0.82);
+      z-index: 0;
+    }
+  }
+  
+  .burger{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    width:44px;
+    height: 44px;
+    padding: 2px 7px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .burger span{
+    display: block;
+    height: 3px;
+    border-radius:3px;
+    background: #e8c9cc;        /* soft pink like your image */
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+  header.menu-open .burger span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+  header.menu-open .burger span:nth-child(2) { opacity: 0; }
+  header.menu-open .burger span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 8px 24px 28px;
+    background: rgb(20 17 18 / 96%);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #3a2020;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  }
+  header.menu-open .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  /* links stacked vertically */
+  .nav {
+    position: static;           /* cancels your desktop position: fixed */
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    text-align: left;
+  }
+  .nav a {
+    padding: 16px 0;
+    font-size: 22px;
+    font-weight: 500;
+    border-bottom: 1px solid #2b1a1d;
+  }
+
+  /* Get In Touch at the bottom, full width */
+  .contact {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 32px 0 0;
+    padding: 14px 20px;
+    font-size: 20px;
+    position:static;
+    color: white;
+  }
+  .cin-im {
+  display: none;
+  }         
+  cin-svc .cin-c { opacity: 1; transform: none; }          /* text no longer fades with scroll */
+  .cin-line { clip-path: inset(-30px -40px -8px -40px); }   /* mask: lines slide up out of it */
+  .cin-line > span { display: block; }
+  .cin-dot, .cin-dia { transform-box: fill-box; transform-origin: center; }
+  .cin-swatches i { transform-origin: 50% 100%; }
+  .cin-svc .cin-frame {                                     /* light sweep layer */
+    background-image: linear-gradient(105deg, transparent 40%, rgba(255,120,120,.16) 50%, transparent 60%);
+    background-size: 250% 100%;
+    background-repeat: no-repeat;
+    background-position: 140% 0;
+  }
+  .cin-svc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);   /* one column that can never grow wider than the screen */
+    justify-content: center;
+    justify-items: center;
+    min-height: auto;        /* removes the forced tall row */
+    padding: 30px 5vw;       /* tighten the top/bottom space */
+  }
+
+  .cin-c {
+    width: 100%;
+    max-width: 320px;        /* keep your box width here */
+    margin-left: auto;       /* auto margins on both sides push the box to the middle */
+    margin-right: auto;
+  }
+}
+
+/* ---------- animations (mobile, and only if motion is allowed) ---------- */
+@media (max-width: 700px) and (prefers-reduced-motion: no-preference) {
+
+  /* START STATE: before the card is on screen */
+  .cin-svc:not(.is-in) .cin-frame { opacity: 0; transform: translateY(24px) scale(.97); }
+  .cin-svc:not(.is-in) .cin-frame::before,
+  .cin-svc:not(.is-in) .cin-frame::after { width: 0; height: 0; }
+  .cin-svc:not(.is-in) .cin-line > span { transform: translateY(140%); }
+  .cin-svc:not(.is-in) .cin-rule { transform: scaleX(0); opacity: 0; }
+  .cin-svc:not(.is-in) .cin-desc span { opacity: 0; }
+  .cin-svc:not(.is-in) .cin-draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .cin-svc:not(.is-in) .cin-dot,
+  .cin-svc:not(.is-in) .cin-dia { opacity: 0; transform: scale(0); }
+  .cin-svc:not(.is-in) .cin-orb { opacity: 0; }
+  .cin-svc:not(.is-in) .cin-swatches i { opacity: 0; transform: translateY(-46px); }
+  .cin-svc:not(.is-in) .cin-wave i { opacity: 0; }
+  .cin-svc:not(.is-in) .cin-acts span { opacity: 0; }
+
+  /* 1. FRAME: rises, corners draw in, light sweeps across, then a soft breathing glow */
+  .cin-svc.is-in .cin-frame {
+    animation:
+      cinFrameIn .8s cubic-bezier(.16,1,.3,1) both,
+      cinSheen 1.6s .5s ease-out both,
+      cinGlow 4.5s ease-in-out 1.6s infinite;
+  }
+  .cin-svc.is-in .cin-frame::before { animation: cinCorner .6s .2s cubic-bezier(.16,1,.3,1) both; }
+  .cin-svc.is-in .cin-frame::after  { animation: cinCorner .6s .35s cubic-bezier(.16,1,.3,1) both; }
+
+  /* 2. TITLE: each line slides up out of the mask, one after another */
+  .cin-svc.is-in .cin-line > span {
+    animation: cinRise .85s cubic-bezier(.16,1,.3,1) both;
+    animation-delay: calc(.25s + var(--i, 0) * .14s);
+  }
+
+  /* 3. RED RULE grows from the centre */
+  .cin-svc.is-in .cin-rule { animation: cinRule .7s .5s cubic-bezier(.16,1,.3,1) both; }
+
+  /* 4. DESCRIPTION: red lead line slides in from the left, the others rise out of a blur */
+  .cin-svc.is-in .cin-desc span {
+    animation: cinLine .8s cubic-bezier(.16,1,.3,1) both;
+    animation-delay: calc(.65s + var(--i, 0) * .14s);
+  }
+  .cin-svc.is-in .cin-desc span:first-child { animation-name: cinLead; }
+
+  /* 5. THE VISUALS: a different animation for each service */
+
+  /* story: the line draws itself, dots pop with a bounce as it reaches them */
+  .cin-svc.is-in .cin-draw { stroke-dasharray: 1; animation: cinDraw 1.1s 1.05s cubic-bezier(.65,0,.35,1) both; }
+  .cin-svc.is-in .cin-dot {
+    animation: cinPop .6s cubic-bezier(.34,1.56,.64,1) both;
+    animation-delay: calc(1.05s + var(--t, 0) * 1s);
+  }
+
+  /* motion: curve draws, diamonds spin in, then the dot appears and travels */
+  .cin-svc.is-in .cin-dia {
+    animation: cinSpin .7s cubic-bezier(.34,1.56,.64,1) both;
+    animation-delay: calc(1.05s + var(--t, 0) * 1s);
+  }
+  .cin-svc.is-in .cin-orb { animation: cinFade .5s 1.7s both; }
+
+  /* color: swatches DROP in one by one, squash on landing and bounce */
+  .cin-svc.is-in .cin-swatches i {
+    animation: cinDrop .95s ease-in-out both;
+    animation-delay: calc(1s + var(--i, 0) * .1s);
+  }
+
+  /* sound: bars fade in from the centre outwards, then keep dancing */
+  .cin-svc.is-in .cin-wave i {
+    animation: cinBarIn .5s ease-out both, cinWave 1.2s ease-in-out infinite;
+    animation-delay: calc(1s + var(--d, 0) * .05s), calc(var(--k) * -.09s);
+  }
+
+  /* 6. LABELS fade up last */
+  .cin-svc.is-in .cin-acts span {
+    animation: cinLabel .6s cubic-bezier(.16,1,.3,1) both;
+    animation-delay: calc(1.7s + var(--i, 0) * .12s);
+  }
+
+  /* ---------- keyframes ---------- */
+  @keyframes cinFrameIn { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes cinCorner  { from { width: 0; height: 0; } to { width: 26px; height: 26px; } }
+  @keyframes cinSheen   { from { background-position: 140% 0; } to { background-position: -40% 0; } }
+  @keyframes cinGlow {
+    0%, 100% { box-shadow: 0 24px 60px rgba(0,0,0,.5), inset 0 0 60px rgba(230,57,70,.06); }
+    50%      { box-shadow: 0 24px 60px rgba(0,0,0,.5), inset 0 0 70px rgba(230,57,70,.18); }
+  }
+  @keyframes cinRise { from { transform: translateY(140%); } to { transform: none; } }
+  @keyframes cinRule { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+  @keyframes cinLead {
+    from { opacity: 0; transform: translateX(-24px); letter-spacing: .16em; filter: blur(5px); }
+    to   { opacity: 1; transform: none; letter-spacing: 0; filter: none; }
+  }
+  @keyframes cinLine {
+    from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes cinDraw  { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes cinPop   { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+  @keyframes cinSpin  { from { opacity: 0; transform: scale(0) rotate(-180deg); } to { opacity: 1; transform: none; } }
+  @keyframes cinFade  { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes cinBarIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes cinLabel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes cinDrop {
+    0%   { opacity: 0; transform: translateY(-46px) scaleY(1.1); }
+    55%  { opacity: 1; transform: translateY(0) scaleY(.86); }
+    72%  { transform: translateY(-10px) scaleY(1.04); }
+    86%  { transform: translateY(0) scaleY(.97); }
+    100% { opacity: 1; transform: none; }
+  }
+  @keyframes cinWave { 0%, 100% { transform: scaleY(.2); } 50% { transform: scaleY(1); } }
 }

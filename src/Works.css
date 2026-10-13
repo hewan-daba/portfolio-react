@@ -62,5 +62,12 @@
 .wk-block .reel-grid{padding-top:8px}
 
 @media(max-width:900px){.wk-wrap{padding:0 20px}.wk-block{padding-top:56px}.works-carousel-wrap{height:460px}}
+@media(max-width: 760px){
+    .wk-bar .wk-chip{flex:none;padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:12px;font-weight:500;transition:.2s}
+    .wk-chip:hover{border-color:var(--accent)}
+    .wk-chip[aria-pressed=true]{background:var(--grad);border-color:transparent}
+    .wk-chip span{opacity:.6;margin-left:6px}
+
+}
 @media(max-width:540px){.wk-stats{gap:24px}}
 @media(prefers-reduced-motion:reduce){.wk-chip{transition:none}}

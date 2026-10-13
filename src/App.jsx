@@ -7,123 +7,220 @@ import Works from "./Works";
 import "./App.css";
 import Footer from "./Footer";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faLinkedin,
-  faTelegram
-} from "@fortawesome/free-brands-svg-icons";
+const SERVICES = [
+  {
+    title: ["STORY", "TELLING"],
+    description: [
+      "Not just cutting clips.",
+      "I Control Timing, Rhythm, Attention",
+      "Frame by frame,",
+      "I build the experience",
+    ],
+    leftImage: "/images/storyleft.jpg",
+    rightImage: "/images/storyright.jpg",
+    type: "story",
+    labels: ["Setup", "Conflict", "Payoff"],
+  },
+  {
+    title: ["COLOR", "GRADING"],
+    description: [
+      "Light set the mood.",
+      "Color brings it to life.",
+      "Contrast gives it depth.",
+      "Every frame tells story.",
+    ],
+    leftImage: "/images/colorleft.jpg",
+    rightImage: "/images/colorright.jpg",
+    type: "color",
+    labels: ["Shadows", "Mids", "Highlights"],
+  },
+  {
+    title: ["MOTION &", "GRAPHICS"],
+    description: [
+      "Ideas take shape.",
+      "Design gives them meaning.",
+      "Motion brings them to life.",
+      "Every frame makes an impact.",
+    ],
+    leftImage: "/images/motionleft.jpg",
+    rightImage: "/images/motionright.jpg",
+    type: "motion",
+    labels: ["Keyframe", "Ease", "Keyframe"],
+  },
+  {
+    title: ["SOUND &", "MUSIC"],
+    description: [
+      "Sound sets the mood.",
+      "Music sets the emotion.",
+      "Every beat finds its place.",
+      "Every moment feels alive.",
+    ],
+    leftImage: "/images/musicleft.jpg",
+    rightImage: "/images/musicright.jpg",
+    type: "sound",
+    labels: ["Dialogue", "Music", "FX"],
+  },
+];
 
-function ScrollService({
-  title,
-  description,
-  leftImage,
-  rightImage,
-}) {
-  const serviceRef = useRef(null);
+function ServiceViz({ type, labels }) {
+  let visual = null;
 
+  if (type === "story") {
+    visual = (
+      <svg className="cin-viz" viewBox="0 0 160 50">
+        <path
+          className="cin-draw"
+          pathLength="1"
+          d="M4 42C40 42 44 10 80 10S124 40 156 8"
+          fill="none"
+          stroke="#E63946"
+          strokeWidth="2"
+        />
+        <circle className="cin-dot" style={{ "--t": 0 }} cx="4" cy="42" r="3" />
+        <circle className="cin-dot" style={{ "--t": 0.45 }} cx="80" cy="10" r="3" />
+        <circle className="cin-dot" style={{ "--t": 0.95 }} cx="156" cy="8" r="3" />
+      </svg>
+    );
+  }
+
+  if (type === "color") {
+    visual = (
+      <div className="cin-swatches">
+        {["#0f4c5c", "#1d7a86", "#e36414", "#fb8b24", "#f5f1ee"].map((color, n) => (
+          <i key={color} style={{ background: color, "--i": n }} />
+        ))}
+      </div>
+    );
+  }
+
+  if (type === "motion") {
+    visual = (
+      <svg className="cin-viz" viewBox="0 0 160 50">
+        <path
+          className="cin-draw"
+          pathLength="1"
+          d="M4 46C60 46 70 4 156 4"
+          fill="none"
+          stroke="#E63946"
+          strokeWidth="2"
+        />
+        <g className="cin-dia" style={{ "--t": 0 }}>
+          <rect x="2" y="44" width="6" height="6" transform="rotate(45 5 47)" />
+        </g>
+        <g className="cin-dia" style={{ "--t": 0.95 }}>
+          <rect x="153" y="1" width="6" height="6" transform="rotate(45 156 4)" />
+        </g>
+        <circle className="cin-orb" r="4">
+          <animateMotion dur="2.6s" repeatCount="indefinite" path="M4 46C60 46 70 4 156 4" />
+        </circle>
+      </svg>
+    );
+  }
+
+  if (type === "sound") {
+    visual = (
+      <div className="cin-wave">
+        {Array.from({ length: 26 }, (_, k) => (
+          <i key={k} style={{ "--k": k, "--d": Math.abs(k - 12.5) }} />
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {visual}
+      <div className="cin-acts">
+        {labels.map((label, n) => (
+          <span key={label} style={{ "--i": n }}>{label}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function ScrollService({ title, description, leftImage, rightImage, type, labels }) {
+  const rowRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  /* scroll progress (--p) for the side images (desktop and tablet) */
   useEffect(() => {
-    const handleScroll = () => {
-      const section = serviceRef.current;
-
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-
-      /*
-        0 = service is just entering
-        1 = service has moved through the viewport
-      */
-
-      let progress =
-        1 - rect.top / window.innerHeight;
-
-      progress = Math.max(0, Math.min(1, progress));
-
-      /*
-        How far the images move outward.
-        0 = together
-        1 = far apart
-      */
-
-      const movement = progress * 35;
-
-      const leftImageElement =
-        section.querySelector(".service-image-left");
-
-      const rightImageElement =
-        section.querySelector(".service-image-right");
-
-      if (leftImageElement) {
-        leftImageElement.style.transform =
-          `translateX(calc(-50% - ${movement}vw))rotate(-2deg)`;
-      }
-
-      if (rightImageElement) {
-        rightImageElement.style.transform =
-          `translateX(calc(-50% + ${movement}vw))rotate(2deg)`;
-      }
+    const update = () => {
+      const row = rowRef.current;
+      if (!row) return;
+      const top = row.getBoundingClientRect().top;
+      const vh = window.innerHeight;
+      const progress = Math.max(0, Math.min(1, (vh * 0.95 - top) / (vh * 0.6)));
+      row.style.setProperty("--p", progress.toFixed(3));
     };
-
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      { passive: true }
-    );
-
-    window.addEventListener(
-      "resize",
-      handleScroll
-    );
-
-    handleScroll();
-
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
     return () => {
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
-
-      window.removeEventListener(
-        "resize",
-        handleScroll
-      );
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
-  
+
+  /* start the text animations when the text card scrolls into view,
+     reset when it has fully left, so they play again next time */
+  useEffect(() => {
+    const card = rowRef.current?.querySelector(".cin-c");
+    if (!card) return;
+    if (!("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio >= 0.3) setInView(true);
+        else if (entry.intersectionRatio === 0) setInView(false);
+      },
+      { threshold: [0, 0.3] }
+    );
+    io.observe(card);
+    return () => io.disconnect();
+  }, []);
+
+  const hideBrokenImage = (e) => {
+    e.currentTarget.style.display = "none";
+  };
+
   return (
-    <div
-      className="service-scroll"
-      ref={serviceRef}
-    >
+    <div className={`cin-svc ${inView ? "is-in" : ""}`} ref={rowRef}>
+      <figure className="cin-im l">
+        <img src={leftImage} alt="" onError={hideBrokenImage} />
+      </figure>
 
-      <div className="service-text">
+      <div className="cin-c">
+        <div className="cin-frame">
+          <h2 className="cin-title">
+            {title.map((line, n) => (
+              <span className="cin-line" key={line}>
+                <span style={{ "--i": n }}>{line}</span>
+              </span>
+            ))}
+          </h2>
 
-        <p className="content">
-          {title}
-        </p>
+          <div className="cin-rule" />
 
-        <p className="contentin">
-          {description}
-        </p>
+          <p className="cin-desc">
+            {description.map((line, n) => (
+              <span key={line} style={{ "--i": n }}>{line}</span>
+            ))}
+          </p>
 
+          <ServiceViz type={type} labels={labels} />
+        </div>
       </div>
 
-      <img
-        className="service-image service-image-left"
-        src={leftImage}
-        alt=""
-      />
-
-      <img
-        className="service-image service-image-right"
-        src={rightImage}
-        alt=""
-      />
-
+      <figure className="cin-im r">
+        <img src={rightImage} alt="" onError={hideBrokenImage} />
+      </figure>
     </div>
   );
 }
+
 
 function HeroVideos({ show }) {
   const videos = [
@@ -191,6 +288,17 @@ function Home() {
     }, 1900);
 
     return () => clearTimeout(timer);
+  }, []);
+    useEffect(() => {
+    if (window.location.hash === "#contact") {
+      const target = document.getElementById("contact");
+      if (target) {
+        // small delay so the page has fully painted before scrolling
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
   }, []);
   useEffect(() => {
   const SLOW_FACTOR = 0.25; // lower = slower
@@ -296,84 +404,19 @@ function Home() {
             </div>
           </div>
         </section>
-        <section className="services" ref={servicesRef}>
-          <ScrollService
-            title={
-              <>
-                STORY
-                <br />
-                TELLING
-              </>
-            }
-            description={
-              <>
-                Every Cut Has a Purpose
-              </>
-            }
-            leftImage="/images/storyleft.jpg"
-            rightImage="/images/storyright.jpg"
-          />
-
-
-          <ScrollService
-            title={
-              <>
-                COLOR
-                <br />
-                GRADING
-              </>
-            }
-            description={
-              <>
-                Mood, Tone,
-                <br />
-                Consistancy
-              </>
-            }
-            leftImage="/images/colorleft.jpg"
-            rightImage="/images/colorright.jpg"
-          />
-
-
-          <ScrollService
-            title={
-              <>
-                MOTION &
-                <br />
-                GRAPHICS
-              </>
-            }
-            description={
-              <>
-                Turning Ideas
-                <br />
-                Into Motion
-              </>
-            }
-            leftImage="/images/motionleft.jpg"
-            rightImage="/images/motionright.jpg"
-          />
-
-
-          <ScrollService
-            title={
-              <>
-                SOUND &
-                <br />
-                MUSIC
-              </>
-            }
-            description={
-              <>
-                The Feeling Between
-                <br />
-                The Frames
-              </>
-            }
-            leftImage="/images/musicleft.jpg"
-            rightImage="/images/musicright.jpg"
-          />
-
+        <section className="services cinema" ref={servicesRef}>
+          {SERVICES.map((service, index) => (
+            <ScrollService
+              key={service.type}
+              index={index}
+              title={service.title}
+              description={service.description}
+              leftImage={service.leftImage}
+              rightImage={service.rightImage}
+              type={service.type}
+              labels={service.labels}
+            />
+          ))}
         </section>
        <Footer />
       </div>

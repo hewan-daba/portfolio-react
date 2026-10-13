@@ -45,11 +45,6 @@
 .copy .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .copy .actions a { margin: 0; }
 
-@media (max-width: 760px) {
-  .about-page .hero { grid-template-columns: 1fr; }
-  .photo-frame { max-width: 340px; margin: 0 auto; }
-}
-
 .about-content {
   background: #000000;
   color: #ffffff;
@@ -181,6 +176,8 @@
   color: #aaaab8;
   margin: 0 0 18px;
   max-width: 700px;
+  text-align: justify;        /* every line, except the last of each paragraph, ends at the same right edge */
+  text-justify: inter-word;   /* the browser stretches the gaps between words, not between letters */
 }
 
 @media (max-width: 900px) {
@@ -436,6 +433,7 @@
   color: #f5e7e7;
   line-height:1.1 ;
 }
+.txt-short{display: none}
 .footer2 {
   display: flex;
   align-items: center;
@@ -483,7 +481,9 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-
+.buttons a{
+  text-decoration: none;
+}
 .cta {
   --h: 56px;
   display: flex;
@@ -567,3 +567,79 @@
 @media (prefers-reduced-motion: reduce) {
   .cta, .cta-layer { transition: none; }
 }
+@media (max-width: 760px) {
+  .about-page .hero { grid-template-columns: 1fr; padding-bottom: 5px;}
+  .photo-frame { max-width: 340px; margin: 0 auto; }
+  .photo-frame .pic { aspect-ratio: 6 / 7; border-radius: 6px; overflow: hidden; position: relative; box-shadow: 0 30px 70px -25px rgba(0,0,0,.6); }
+  .copy h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; text-align: left; }
+  .copy h1 .accent { color: var(--accent-2); text-align: left; }
+  .copy .role { margin: 14px 0 0; color: var(--mute); font-size: 18px; font-weight: 500; text-align: left; }
+  .copy .bio { font-style: italic; font-size: 18px; line-height: 1.5; color: var(--ink); margin: 20px 0 26px; max-width: 46ch;
+    padding-left: 18px; border-left: 2px solid var(--accent); text-align: left;}
+  .statbar { display: flex; flex-wrap: wrap; gap: 28px; margin: 0 0 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .statbar div b { display: block; font: 700 15px "Bricolage Grotesque", sans-serif; color: var(--ink); }
+  .statbar div span { font-size: 11px; color: var(--mute); }
+  .about-page .about-content{
+   padding-bottom: 30px; gap: 50px}
+  .about-content .ability-main {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+  }
+  .ability-cat{padding: 25px ;}
+  .ability-sub{font-size: 13px;}
+  .ability-story h2{font-size: 40px;}
+  .ability-story p{font-size: 19px;}
+  .about-page .bring{padding: 30px 20px; padding-top: 10px;}
+  .bring h3{font-size: 40px;}
+  .bring-cat{gap:20px;}
+  .bring-cats{padding:15px;}
+  .bring-cats h4{font-size: 19px;}
+  .bring-cats p{font-size: 10px; font-weight: 500; padding: 5px 0;}
+  .work-flow{padding: 30px; }
+  .work-flow h3{font-size: 40px; }
+  .work-flow p{font-size: 19px; }
+  .work-flow-cats{padding: 22px 20px 20px; margin: 15px 0;} 
+  .work-flow-cats h4{font-size: 20px; font-weight: 800;}
+  .work-flow-cats p{font-size: 15px;}
+  .tools{padding: 10px 30px; margin-bottom: 35px;}
+  .tools h3{font-size: 30px; padding: 0; margin-bottom: 35px; }
+  .tool-pill{padding: 5px;}
+  .tool-pill img {width: 40px; height: 40px;}
+  .tool-pill span{font-size: 15px;}
+  .power{padding: 10px 30px; }
+  .power h3{font-size: 30px; width: 100%;}
+  .power h3 br{display:none;}
+  .power-cat{gap:10px;}
+  .power-cats{padding: 20px 15px 0 0;}
+  .txt-full{display: none;}
+  .txt-short{display: inline;}
+  .footer2{position: relative; isolation: isolate;
+    min-height: 0;
+    padding: 20px 0 50px;
+    overflow: hidden;}
+  .footer2-left{position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 5px 20px;
+    pointer-events: none;}
+  .footer2-left h3{font-size: 40px;}
+  .footer2-left h3 span{color: rgb(155 142 142);}
+  .footer2-left p{color: rgb(199, 189, 189); font-size: 15px; width: 50%;}
+  .footer2 .cta {
+    --h: 42px;
+    width: 150px;
+    max-width: 100%;
+  }
+
+  .footer2 .cta-layer span {
+    font-size: 14px;
+  }
+  .footer2 .buttons{pointer-events: auto;}
+  .footer2-right{position: absolute;
+    inset:0;
+    z-index: 1;
+    width: 100%;
+    padding: 0;}
+  .footer2-right .tw-perspective-stage{width: 190%;}
+} 

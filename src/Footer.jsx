@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Footer.css";
 
 /* ---------- EDIT THESE ---------- */
-const EMAIL = "you@example.com";
+const EMAIL = "lioroba04@gmail.com";
 
 /* Your social links. Shown in this order.
    - To REMOVE an icon: delete its line.
@@ -10,13 +10,13 @@ const EMAIL = "you@example.com";
      instagram, linkedin, telegram, tiktok, youtube, behance, x, facebook, whatsapp
    - href must be the FULL link and start with https://        */
 const SOCIALS = [
-  { id: "instagram", label: "Instagram", href: "https://instagram.com/YOUR_USERNAME" },
-  { id: "linkedin",  label: "LinkedIn",  href: "https://www.linkedin.com/in/YOUR_NAME" },
-  { id: "telegram",  label: "Telegram",  href: "https://t.me/YOUR_USERNAME" },
-  { id: "tiktok",    label: "TikTok",    href: "https://www.tiktok.com/@YOUR_USERNAME" },
-  { id: "youtube",   label: "YouTube",   href: "https://www.youtube.com/@YOUR_HANDLE" },
+  { id: "instagram", label: "Instagram", href: "https://instagram.com/roba_vfx" },
+  { id: "linkedin",  label: "LinkedIn",  href: "https://www.linkedin.com/in/robera-daba-238134281 " },
+  { id: "telegram",  label: "Telegram",  href: "https://t.me/Roba_vfx" },
+  { id: "tiktok",    label: "TikTok",    href: "https://www.tiktok.com/@roba_vfx " },
+  { id: "x",        label: "X",        href: "https://x.com/@robera_vfx" },
+  // { id: "youtube",   label: "YouTube",   href: "https://www.youtube.com/@YOUR_HANDLE" },
   // { id: "behance",  label: "Behance",  href: "https://www.behance.net/YOUR_USERNAME" },
-  // { id: "x",        label: "X",        href: "https://x.com/YOUR_USERNAME" },
   // { id: "facebook", label: "Facebook", href: "https://facebook.com/YOUR_USERNAME" },
   // { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/251XXXXXXXXX" },
 ];
@@ -128,7 +128,7 @@ function Footer() {
 
   return (
     <>
-      <footer className="rbx-foot" onPointerMove={onMove} onPointerLeave={onLeave}>
+      <footer className="rbx-foot" id="contact" onPointerMove={onMove} onPointerLeave={onLeave}>
         <div className="rbx-wrap rbx-top">
           {/* left */}
           <div className="rbx-about">
@@ -162,14 +162,14 @@ function Footer() {
               <a className="rbx-mail" href={`mailto:${EMAIL}`}>{EMAIL}</a>
               <button type="button" className="rbx-copy" onClick={copyEmail}>Copy</button>
             </div>
-            <div className="rbx-row">
+            <div className="rbx-row rbx-loc">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z" />
                 <circle cx="12" cy="9.5" r="2.5" />
               </svg>
               Addis Ababa, Ethiopia
             </div>
-            <div className="rbx-row">
+            <div className="rbx-row rbx-status">
               <i />
               Replies within 24 hours
             </div>
@@ -180,13 +180,13 @@ function Footer() {
 
         <div className="rbx-bar">
           <div className="rbx-wrap rbx-barin">
-            <span>© 2026 Robera Daba. All rights reserved.</span>
-            <span className="rbx-mid">
-              Addis Ababa, Ethiopia · <b>{time}</b> local time · Working worldwide
+            <span className="rbx-copyr">© 2026 Robera Daba. <span className="rbx-copys">All rights reserved.</span></span>
+            <span className="rbx-mid rbx-coun">
+              Addis Ababa, Ethiopia · <b>{time}</b> <span className="rbx-hide-m">local time · Working worldwide</span>
             </span>
-            <button type="button" className="rbx-up" onClick={toTop}>
-              Back to top
-              <span>
+            <button type="button" className="rbx-up" onClick={toTop} >
+              <span className="rbx-uprun">Back to top</span>
+              <span className="rbx-uparr">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 19V5M5 12l7-7 7 7" />
                 </svg>

@@ -44,8 +44,8 @@ function AboutT() {
               <br />
               <span className="accent">makes brands look bigger.</span>
             </h1>
-            <p className="role">Video Editor &amp; Motion Designer</p>
-            <p className="bio">"I make brands look bigger than they are."</p>
+            <p className="role">Video Editor, Motion &amp; Graphics Designer</p>
+            <p className="bio">"Stories don't end at the cut."</p>
 
             <div className="statbar">
               <div><b>+1 yr</b><span>Experience</span></div>
@@ -162,15 +162,24 @@ function AboutT() {
           <div className="power-cat">
             <div className="power-cats">
               <h4>Story first</h4>
-              <p>Every project starts with what you want the audience to feel and understand.</p>
+              <p>
+                <span className="txt-full">Every project starts with what you want the audience to feel and understand.</span>
+                <span className="txt-short">Start with what the audience should feel.</span>
+              </p>
             </div>
             <div className="power-cats">
               <h4>Detail always</h4>
-              <p>Small choices in timing and sound decide how a piece feels.</p>
+              <p>
+                <span className="txt-full">Small choices in timing and sound decide how a piece feels.</span>
+                <span className="txt-short">Timing and sound shape the feel.</span>
+              </p>
             </div>
             <div className="power-cats">
               <h4>Built to perform</h4>
-              <p>Content that is meaningful and effective, not only good-looking.</p>
+              <p>
+                <span className="txt-full">Content that is meaningful and effective, not only good-looking.</span>
+                <span className="txt-short">Effective, not just good-looking.</span>
+              </p>
             </div>
           </div>
         </div>
@@ -180,23 +189,23 @@ function AboutT() {
             <h3>Let's make<br /> something people<br/> <span>remember.</span></h3>
             <p>Tell me about your project and I'll get back to you.</p>
             <div className="buttons">
-              <button className="cta cta-primary" type="button">
+              <a href="/#contact" className="cta cta-primary" type="button">
                 <div className="cta-layer">
                   <span>Email me <Arrow /></span>
                 </div>
                 <div className="cta-layer">
                   <span>Let's talk <Arrow /></span>
                 </div>
-              </button>
+              </a>
 
-              <button className="cta cta-secondary" type="button">
+              <a href="/works" className="cta cta-secondary" type="button">
                 <div className="cta-layer">
                   <span>View my work <Arrow /></span>
                 </div>
                 <div className="cta-layer">
                   <span>Enjoy <Arrow /></span>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
           <div className="footer2-right">
