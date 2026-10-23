@@ -97,17 +97,18 @@ const myWorks = [
 ];
 
 const myVideos = [
-  { id: "v1", src: "/videos/calander.mp4", title: "Brand promo" },
-  { id: "v2", src: "/videos/company.mp4", title: "Edit reel" },
-  { id: "v3", src: "/videos/illegal.mp4", title: "Motion piece" },
-  { id: "v4", src: "/videos/createnewedit.mp4", title: "Short film" },
-  { id: "v5", src: "/videos/callme.mp4", title: "Short film" },
-  { id: "v6", src: "/videos/firstedit.mp4", title: "Short film" },
-  { id: "v7", src: "/videos/imangazi.mp4", title: "Short film" },
-  { id: "v8", src: "/videos/linkedinport.mp4", title: "Short film" },
-  { id: "v9", src: "/videos/paper.mp4", title: "Short film" },
-  { id: "v10", src: "/videos/parlama.mp4", title: "Short film" },
-  { id: "v11", src: "/videos/youtube.mp4", title: "Short film" },
+  { id: "v1", src:"/videos/instaPost01.mp4", title:"Reel"},
+  { id: "v2", src: "/videos/calander.mp4", title: "Brand promo" },
+  { id: "v3", src: "/videos/company.mp4", title: "Edit reel" },
+  { id: "v4", src: "/videos/illegal.mp4", title: "Motion piece" },
+  { id: "v5", src: "/videos/createnewedit.mp4", title: "Short film" },
+  { id: "v6", src: "/videos/callme.mp4", title: "Short film" },
+  { id: "v7", src: "/videos/firstedit.mp4", title: "Short film" },
+  { id: "v8", src: "/videos/imangazi.mp4", title: "Short film" },
+  { id: "v9", src: "/videos/linkedinport.mp4", title: "Short film" },
+  { id: "v10", src: "/videos/paper.mp4", title: "Short film" },
+  { id: "v11", src: "/videos/parlama.mp4", title: "Short film" },
+  { id: "v12", src: "/videos/youtube.mp4", title: "Short film" },
 
 ];
 
